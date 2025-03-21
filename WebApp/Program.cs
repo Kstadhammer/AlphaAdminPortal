@@ -1,4 +1,11 @@
+using Data.Contexts;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<DataContext>(x =>
+    x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 builder.Services.AddControllersWithViews();
 
