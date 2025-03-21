@@ -60,6 +60,9 @@
   --dark-opacity-20: rgba(26, 25, 38, 0.2);
   --dark-opacity-60: rgba(26, 25, 38, 0.6);
 
+  /* Box shadow variants */
+  --box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.05);
+
   /* Text colors */
   --text-color: var(--dark-400);
   --text-muted-color: var(--gray-800);
@@ -95,6 +98,83 @@
   --navlink-background-color: transparent;
   --navlink-background-hover-color: var(--blue-light);
   --navlink-background-active-color: var(--blue-light-opacity);
+  /* Form base styles */
+  --form-text-color: var(--white-100);
+  --form-border-color: var(--white-100);
+  --form-background-color: var(--white-100);
+
+  --form-label-color: var(--dark-200);
+
+  /* Form input styles */
+  --form-input-text-color: var(--dark-200);
+  --form-input-placeholder-color: var(--gray-600);
+  --form-input-background-color: var(--white-100);
+  --form-input-border-color: var(--gray-400);
+  --form-input-border-focus-color: var(--blue-semilight);
+
+  /* Form error input styles */
+  --form-error-input-text-color: var(--dark-200);
+  --form-error-input-background-color: var(--white-100);
+  --form-error-input-border-color: var(--red-semilight);
+  --form-error-input-border-focus-color: var(--blue-semilight);
+
+  /* Form error message styles */
+  --form-error-message-text-color: var(--red-dark);
+  --form-error-message-background-color: var(--red-light);
+  --form-error-message-border-color: var(--red-light);
+
+  /* Alert notification styles */
+  --alert-notification-error-text-color: var(--red-dark);
+  --alert-notification-error-background-color: var(--red-light);
+}
+
+#login {
+  width: 600px;
+  background-color: var(--form-background-color);
+  padding: 4rem;
+  border-radius: 14px;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+#login h1 {
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: grid;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 1em;
+  font-weight: 500;
+  text-align: left;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  font-size: 1em;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  outline: none;
+  transition: border-color 0.1s ease-in-out;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--form-input-border-focus-color);
+}
+
+input::placeholder,
+select::placeholder,
+textarea::placeholder {
+  color: var(--form-input-placeholder-color);
+  font-size: 0.9em;
 }
 
 *,
@@ -112,6 +192,59 @@ body {
   font-style: normal;
   color: var(--text-color);
   background-color: var(--background-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--font-standard);
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+.h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+h2,
+.h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+h3,
+.h3 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+h4,
+.h4 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+h5,
+.h5 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h6,
+.h6 {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .wrapper-centerscreen {
@@ -233,4 +366,18 @@ nav .nav-link.active {
 .btn-add::before {
   content: "\2b";
   font-family: var(--font-fa-pro);
+}
+
+.btn-submit {
+  margin-top: 1rem;
+}
+
+.alert-notification {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+.alert-notification.error {
+  background-color: var(--alert-notification-error-background-color);
+  color: var(--alert-notification-error-text-color);
 }

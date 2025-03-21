@@ -1,3 +1,4 @@
+using Business.Services;
 using Data.Contexts;
 using Data.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +10,7 @@ builder.Services.AddDbContext<DataContext>(x =>
     x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder
     .Services.AddIdentity<MemberEntity, IdentityRole>(options =>
     {

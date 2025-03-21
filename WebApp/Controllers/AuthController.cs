@@ -11,27 +11,25 @@ public class AuthController(IAuthService authService) : Controller
 
     public IActionResult Login()
     {
-        ViewBag.ErrorMessage = null;
+        ViewBag.ErrorMessage = "";
         return View();
     }
 
     [HttpPost]
     public async Task<IActionResult> Login(MemberLoginForm form, string returnUrl = "~/")
     {
-        ViewBag.ErrorMessage = null;
-        if (!ModelState.IsValid)
+        ViewBag.ErrorMessage = "";
+
+        if (ModelState.IsValid)
         {
-            ViewBag.ErrorMessage = "Invalid email address";
-            return View(form);
+            var result = await _authService.LoginAsync(form);
+            if (result)
+            {
+                return Redirect(returnUrl);
+            }
         }
 
-        var result = await _authService.LoginAsync(form);
-        if (result)
-        {
-            return Redirect(returnUrl);
-        }
-
-        ViewBag.ErrorMessage = "Unable to login right now. Please try again later.";
+        ViewBag.ErrorMessage = "Invalid email address or password";
         return View(form);
     }
 }
