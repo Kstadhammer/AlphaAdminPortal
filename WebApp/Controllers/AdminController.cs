@@ -1,11 +1,14 @@
+using Business.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers;
 
 [Authorize]
-public class AdminController : Controller
+public class AdminController(IMemberService memberService) : Controller
 {
+    private readonly IMemberService _memberService = memberService;
+
     // GET
     public IActionResult Index()
     {
@@ -17,9 +20,10 @@ public class AdminController : Controller
         return View();
     }
 
-    public IActionResult Members()
+    public async Task<IActionResult> Members()
     {
-        return View();
+        var members = await _memberService.GetAllMembers();
+        return View(members);
     }
 
     public IActionResult Clients()

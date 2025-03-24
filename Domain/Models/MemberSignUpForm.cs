@@ -28,8 +28,4 @@ public class MemberSignUpForm
     [DataType(DataType.Password)]
     [Display(Name = "Confirm Password", Prompt = "Confirm your password")]
     public string ConfirmPassword { get; set; } = null!;
-
-    [Required]
-    [Display(Name = "Terms and Conditions", Prompt = "I accept the terms and conditions")]
-    public bool TermsAndConditionsAccepted { get; set; }
 }

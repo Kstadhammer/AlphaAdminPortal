@@ -126,6 +126,10 @@
   /* Alert notification styles */
   --alert-notification-error-text-color: var(--red-dark);
   --alert-notification-error-background-color: var(--red-light);
+
+  --card-text-color: var(--dark-400);
+  --card-border-color: var(--white-100);
+  --card-background-color: var(--white-100);
 }
 
 #login {
@@ -271,6 +275,9 @@ header,
   grid-area: header;
   border-bottom: 1px solid var(--border-color);
   padding: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 aside,
@@ -390,6 +397,13 @@ nav .nav-link.active {
 
 .btn-google img {
   width: 16px;
+}
+
+.btn-logout::before {
+  font-family: var(--font-fa-pro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .or-separator {
@@ -540,4 +554,142 @@ nav .nav-link.active {
 .terms-and-conditions:hover {
   color: var(--blue-dark);
   text-decoration: underline;
+}
+
+/* Members List Styling */
+
+#members {
+  display: grid;
+  gap: 2rem;
+}
+.members-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.card {
+  color: var(--card-text-color);
+  background-color: var(--card-background-color);
+  padding: 4rem;
+  box-shadow: 0px 20px 30px -18px rgba(4, 15, 21, 0.1);
+  text-align: center;
+  border-radius: 14px;
+  padding: 2rem;
+  position: relative;
+  /*width: 350px;
+  height: 272px;
+  flex-shrink: 0;*/
+}
+.card:hover {
+  transform: translateY(-10px);
+  transition: 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.member {
+  text-align: center;
+}
+
+.member .name {
+  color: var(--text-headline-color);
+  text-align: center;
+  font-family: var(--font-standard);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.member .jobtitle {
+  display: inline-flex;
+  padding: 7px 14px;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  margin: 0.5rem 0 2rem;
+  border-radius: 10px;
+  background: var(--gray-200);
+}
+
+.member .email {
+  color: var(--text-muted-color);
+  text-align: center;
+  font-family: var(--font-standard);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.member .phone {
+  color: var(--text-muted-color);
+  text-align: center;
+  font-family: var(--font-standard);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0.2rem 0.5rem;
+  margin: 0.5rem 0 2rem;
+}
+
+.btn-message {
+  display: flex;
+  width: 252px;
+  padding: 14px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 1rem auto 0;
+  border-radius: 14px;
+  border: none;
+  background: var(--gray-100);
+  transition: all 0.2s ease-in-out;
+}
+.btn-message span {
+  color: var(--Heading, #1a1926);
+  text-align: center;
+  font-family: var(--font-standard);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.btn-message:hover {
+  background-color: var(--gray-500); /* Slightly darker shade for hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--gray-200);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-menu {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 4px;
+}
+
+.card-menu .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--gray-800);
+}
+.card-menu:hover {
+  cursor: pointer;
 }

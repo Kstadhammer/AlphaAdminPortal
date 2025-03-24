@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Business.Interfaces;
 using Business.Services;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,10 @@ public class AuthController(IAuthService authService) : Controller
 {
     private readonly IAuthService _authService = authService;
 
-    public IActionResult Login()
+    public IActionResult Login(string returnUrl = "~/")
     {
         ViewBag.ErrorMessage = "";
+        ViewBag.ReturnUrl = returnUrl;
         return View();
     }
 
@@ -25,7 +27,7 @@ public class AuthController(IAuthService authService) : Controller
             var result = await _authService.LoginAsync(form);
             if (result)
             {
-                return Redirect(returnUrl);
+                return LocalRedirect(returnUrl);
             }
         }
 
@@ -42,8 +44,21 @@ public class AuthController(IAuthService authService) : Controller
     [HttpPost]
     public async Task<IActionResult> SignUp(MemberSignUpForm form)
     {
+        if (ModelState.IsValid)
+        {
+            var result = await _authService.SignUpAsync(form);
+            if (result)
+            {
+                return LocalRedirect("~/");
+            }
+        }
         ViewBag.ErrorMessage = "";
-
         return View(form);
+    }
+
+    public async Task<IActionResult> Logout()
+    {
+        await _authService.LogoutAsync();
+        return LocalRedirect("~/");
     }
 }
