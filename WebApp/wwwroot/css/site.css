@@ -5,6 +5,7 @@
   --font-standard: "Nunito", sans-serif;
   --font-logo: "Comfortaa", sans-serif;
   --font-fa-pro: "Font Awesome 7 Pro";
+  --font-fa-free: "Font Awesome 7 Free";
 
   /* Blue variants */
   --blue-light-opacity: rgba(45, 125, 204, 0.1);
@@ -130,6 +131,10 @@
   --card-text-color: var(--dark-400);
   --card-border-color: var(--white-100);
   --card-background-color: var(--white-100);
+
+  --table-header-background-color: var(--white-100);
+  --table-header-text-color: var(--gray-800);
+  --table-tbody-tr-background-hover-color: var(--blue-dark);
 }
 
 #login {
@@ -564,7 +569,7 @@ nav .nav-link.active {
 }
 .members-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 2rem;
 }
 
@@ -577,9 +582,8 @@ nav .nav-link.active {
   border-radius: 14px;
   padding: 2rem;
   position: relative;
-  /*width: 350px;
-  height: 272px;
-  flex-shrink: 0;*/
+  width: 300px;
+  height: 456px;
 }
 .card:hover {
   transform: translateY(-10px);
@@ -668,7 +672,7 @@ nav .nav-link.active {
   margin: 0 auto 1.5rem;
   border-radius: 50%;
   overflow: hidden;
-  background-color: var(--gray-200);
+  background: linear-gradient(135deg, #9dceff 0%, #2d99ff 100%);
 }
 
 .avatar img {
@@ -681,6 +685,9 @@ nav .nav-link.active {
   top: 1rem;
   right: 1rem;
   display: flex;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+
   gap: 4px;
 }
 
@@ -692,4 +699,353 @@ nav .nav-link.active {
 }
 .card-menu:hover {
   cursor: pointer;
+}
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+/* Search bar styling */
+.header-search {
+  position: relative;
+  width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  background-color: var(--white-200);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.search-input::placeholder {
+  color: var(--gray-600);
+}
+
+/* Action icons styling */
+.header-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.icon-button {
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.icon-button:hover {
+  background-color: var(--white-300);
+}
+
+.icon-button img {
+  width: 22px;
+  height: 22px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: var(--red);
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* User profile avatar */
+.user-profile {
+  cursor: pointer;
+}
+
+.avatar-small {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: linear-gradient(
+    135deg,
+    var(--blue-light) 0%,
+    var(--blue) 50%,
+    var(--blue-dark) 100%
+  );
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-actions .divider {
+  height: 24px;
+  width: 1px;
+  background-color: var(--gray-500);
+  margin: 0 0.5rem;
+}
+
+/* tables */
+/* Client List Styling */
+#clients {
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  height: 100%;
+}
+
+.client-list.surface {
+  background-color: var(--card-background-color);
+  border-radius: 14px;
+  box-shadow: 0px 20px 30px -18px rgba(4, 15, 21, 0.1);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  height: 100%;
+}
+
+.client-list table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.client-list th {
+  text-align: left;
+  padding: 1rem;
+  color: var(--text-muted-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.client-list td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.client-check {
+  width: 40px;
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.client-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--blue-light) 0%,
+    var(--blue) 50%,
+    var(--blue-dark) 100%
+  );
+  object-fit: cover;
+}
+
+/* Add these styles to create the vertical layout */
+.client-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.client-name {
+  font-weight: 600;
+  color: var(--text-headline-color);
+  margin-bottom: 0.25rem;
+}
+
+.client-email {
+  font-size: 0.85rem;
+  color: var(--text-muted-color);
+}
+
+.badge {
+  display: inline-flex;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.badge.success {
+  background-color: var(--green-light);
+  color: var(--green);
+}
+
+.client-actions {
+  text-align: right;
+}
+
+.client-list tr:hover {
+  background-color: var(--white-200);
+  cursor: pointer;
+}
+
+/* Add Client Form Styling */
+
+.btn-close {
+  cursor: pointer;
+  font-size: 2em;
+  border: none;
+  color: var(--text-color);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-close::after {
+  content: "×"; /* Using a simple text X instead of Font Awesome */
+  font-size: 24px;
+  line-height: 1;
+}
+.btn-submit {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.modal {
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.164);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal .modal-content {
+  background-color: var(--card-background-color);
+  border-radius: 16px;
+  box-shadow: 0px 40px 30px -30px rgba(4, 15, 21, 0.15),
+    0px 50px 50px 0px rgba(4, 15, 21, 0.15);
+
+  padding: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+#addClientModal .modal-content {
+  width: 530px;
+  height: 700px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+form {
+  width: 100%;
+}
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+/* Profile picture upload styling */
+.profile-upload-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.profile-upload {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.profile-input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.profile-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px dashed var(--gray-400);
+  background-color: var(--white-200);
+  cursor: pointer;
+}
+
+.camera-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--gray-500);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-group.half {
+  flex: 1;
+}
+
+/* Validation error styling */
+form .input-validation-error {
+  border-color: var(--error-border-color);
+}
+
+form .field-validation-error {
+  position: absolute;
+  z-index: 1;
+  right: 0.18rem;
+  top: 3px;
+  font-size: 0.8em;
+  background-color: var(--error-background-color);
+  color: var(--error-text-color);
+  padding: 0.4rem 1rem;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }

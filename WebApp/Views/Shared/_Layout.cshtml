@@ -18,11 +18,23 @@
             <partial name="Partials/_NavLinks" />
         </aside>
         <header class="header">
-            <a class="btn btn-logout" asp-controller="Auth" asp-action="Logout">
-                <i class="fa-regular fa-right-from-bracket"></i>
-                Logout
-            </a>
-
+            <div class="header-search">
+                <img src="~/images/Search.svg" alt="Search" class="search-icon" />
+                <input type="search" placeholder="Search anything..." class="search-input" />
+            </div>
+            <div class="header-actions">
+                <div class="icon-button">
+                    <img src="~/images/Notification.svg" alt="Notifications" />
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="icon-button">
+                    <img src="~/images/Setting.svg" alt="Settings" />
+                </div>
+                <div class="divider"></div>
+                <div class="user-profile">
+                    <img src="~/images/Avatar_male_1.svg" alt="User Avatar" class="avatar-small" />
+                </div>
+            </div>
         </header>
         <main class="main">
             @RenderBody()
