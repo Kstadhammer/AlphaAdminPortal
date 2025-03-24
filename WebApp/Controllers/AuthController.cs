@@ -32,4 +32,18 @@ public class AuthController(IAuthService authService) : Controller
         ViewBag.ErrorMessage = "Invalid email address or password";
         return View(form);
     }
+
+    public IActionResult SignUp()
+    {
+        ViewBag.ErrorMessage = "";
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> SignUp(MemberSignUpForm form)
+    {
+        ViewBag.ErrorMessage = "";
+
+        return View(form);
+    }
 }

@@ -131,7 +131,7 @@
 #login {
   width: 600px;
   background-color: var(--form-background-color);
-  padding: 4rem;
+  padding: 4rem 4rem 1.5rem;
   border-radius: 14px;
   box-shadow: var(--box-shadow);
   text-align: center;
@@ -148,17 +148,19 @@
 }
 
 label {
-  font-size: 1em;
+  font-size: 15px;
   font-weight: 500;
   text-align: left;
+  margin-bottom: 9px;
 }
 input,
 select,
 textarea {
   width: 100%;
   font-size: 1em;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   border-radius: 10px;
+  font-family: var(--font-standard);
   border: 1px solid var(--border-color);
   outline: none;
   transition: border-color 0.1s ease-in-out;
@@ -369,7 +371,51 @@ nav .nav-link.active {
 }
 
 .btn-submit {
+  font-size: 15px;
   margin-top: 1rem;
+}
+
+.btn-google {
+  background-color: var(--white-200);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  margin-top: 25px;
+  gap: 8px;
+  font-weight: 500;
+  padding: 0.8rem 1rem;
+}
+
+.btn-google img {
+  width: 16px;
+}
+
+.or-separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 38px 0;
+}
+
+.or-separator::before,
+.or-separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--gray-300);
+}
+
+.or-separator span {
+  color: var(--gray-600);
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  padding-right: 16px;
+  padding-left: 16px;
 }
 
 .alert-notification {
@@ -380,4 +426,118 @@ nav .nav-link.active {
 .alert-notification.error {
   background-color: var(--alert-notification-error-background-color);
   color: var(--alert-notification-error-text-color);
+}
+
+/* v0 prompt */
+
+/* Remember Me and Forgot Password row */
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.remember-me label {
+  margin-bottom: 0;
+  font-size: 15px;
+  color: #28263b;
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: #2d99ff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.forgot-password:hover {
+  color: #2480d6;
+  text-decoration: underline;
+}
+
+/* Password visibility toggle */
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted-color);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eye-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23637085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+  background-size: contain;
+}
+
+/* Sign up prompt */
+.signup-prompt {
+  text-align: center;
+  margin-top: 45px;
+  font-size: 15px;
+  color: #28263b;
+}
+
+.signup-prompt a {
+  color: #2d99ff;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-prompt a:hover {
+  color: #2480d6;
+  text-decoration: underline;
+}
+/* Signup Form Styling */
+#signup {
+  width: 600px;
+  background-color: var(--form-background-color);
+  padding: 4rem 4rem 1.5rem;
+  border-radius: 14px;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+#signup h1 {
+  margin-bottom: 1rem;
+}
+
+/* Terms and conditions link styling */
+.terms-and-conditions {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.terms-and-conditions:hover {
+  color: var(--blue-dark);
+  text-decoration: underline;
 }
