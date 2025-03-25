@@ -33,15 +33,4 @@ public class AdminController(IMemberService memberService) : Controller
     {
         return View();
     }
-
-    [HttpPost]
-    public IActionResult AddClient(AddClientForm form)
-    {
-        if (!ModelState.IsValid)
-        {
-            return RedirectToAction("Clients");
-        }
-
-        return View();
-    }
 }

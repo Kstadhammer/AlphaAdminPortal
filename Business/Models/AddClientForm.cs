@@ -5,6 +5,10 @@ namespace Business.Models;
 
 public class AddClientForm
 {
+    [Display(Name = "Client Image", Prompt = "Upload Client Image")]
+    [DataType(DataType.Upload)]
+    public IFormFile? ClientImage { get; set; }
+
     [Display(Name = "Client Name", Prompt = "Enter Client Name")]
     [DataType(DataType.Text)]
     [Required(ErrorMessage = "Client Name is required")]
@@ -26,7 +30,4 @@ public class AddClientForm
     [Display(Name = "Phone", Prompt = "Enter Phone")]
     [DataType(DataType.PhoneNumber)]
     public string? Phone { get; set; } = null!;
-
-    [Display(Name = "Profile Image")]
-    public IFormFile? ProfileImage { get; set; }
 }

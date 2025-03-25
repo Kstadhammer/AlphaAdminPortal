@@ -1049,3 +1049,24 @@ form .field-validation-error {
   align-items: center;
   gap: 0.5rem;
 }
+
+.field-validation-error {
+  color: #de3434;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.input-validation-error {
+  border-color: #ffb8a5 !important;
+  background-color: #ffeae4 !important;
+}
+
+.required-indicator {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #de3434;
+  font-size: 0.8rem;
+}
