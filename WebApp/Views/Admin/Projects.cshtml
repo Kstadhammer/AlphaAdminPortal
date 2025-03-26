@@ -2,8 +2,8 @@
     ViewData["Title"] = "Projects";
 }
 
+<partial name="Partials/Sections/_AddProjectForm" />
 <div class="page-header">
     <h1>@ViewData["Title"]</h1>
-    <button class="btn btn-add">Add Project</button>
-
+    <button type="button" class="btn btn-add" data-modal="true" data-target="#addProjectModal">Add Project</button>
 </div>

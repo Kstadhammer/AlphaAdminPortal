@@ -9,6 +9,47 @@
       }
     });
   });
+
+  // Add user dropdown functionality
+  const settingsButton = document.getElementById("settingsButton");
+  const userDropdown = document.getElementById("userDropdown");
+
+  if (settingsButton && userDropdown) {
+    settingsButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      userDropdown.style.display =
+        userDropdown.style.display === "block" ? "none" : "block";
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (
+        userDropdown.style.display === "block" &&
+        !userDropdown.contains(e.target)
+      ) {
+        userDropdown.style.display = "none";
+      }
+    });
+
+    // Dark mode toggle functionality
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    if (darkModeToggle) {
+      // Check for saved preference
+      const darkMode = localStorage.getItem("darkMode") === "true";
+      darkModeToggle.checked = darkMode;
+      if (darkMode) document.body.classList.add("dark-theme");
+
+      darkModeToggle.addEventListener("change", () => {
+        if (darkModeToggle.checked) {
+          document.body.classList.add("dark-theme");
+          localStorage.setItem("darkMode", "true");
+        } else {
+          document.body.classList.remove("dark-theme");
+          localStorage.setItem("darkMode", "false");
+        }
+      });
+    }
+  }
 });
 
 // Add event listeners for close buttons

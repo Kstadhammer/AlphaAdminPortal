@@ -27,12 +27,34 @@
                     <img src="~/images/Notification.svg" alt="Notifications" />
                     <span class="notification-badge">3</span>
                 </div>
-                <div class="icon-button">
+                <div class="icon-button" id="settingsButton">
                     <img src="~/images/Setting.svg" alt="Settings" />
                 </div>
                 <div class="divider"></div>
                 <div class="user-profile">
                     <img src="~/images/Avatar_male_1.svg" alt="User Avatar" class="avatar-small" />
+                </div>
+                <div class="user-dropdown" id="userDropdown">
+                    <div class="dropdown-content">
+                        <div class="user-info">
+                            <img src="~/images/Avatar_male_1.svg" alt="User Avatar" class="avatar-small" />
+                            <span class="user-name">Tommy Mattin-Lassei</span>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <i class="fa-regular fa-gear"></i>
+                            <span>Dark Mode</span>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="darkModeToggle">
+                                <label for="darkModeToggle"></label>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item">
+                            <i class="fa-regular fa-arrow-right-from-bracket"></i>
+                            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
