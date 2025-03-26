@@ -10,10 +10,19 @@ public class ClientsController : Controller
     {
         if (!ModelState.IsValid)
         {
-            return RedirectToAction("Clients");
+            var errors = ModelState
+                .Where(x => x.Value?.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
+
+            return BadRequest(new { success = false, errors });
         }
 
-        return View();
+        // send data to ClientService
+
+        return RedirectToAction("Clients", "Admin");
     }
 
     [HttpPost]
@@ -21,7 +30,14 @@ public class ClientsController : Controller
     {
         if (!ModelState.IsValid)
         {
-            return RedirectToAction("Clients");
+            var errors = ModelState
+                .Where(x => x.Value?.Errors.Count > 0)
+                .ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
+
+            return BadRequest(new { success = false, errors });
         }
 
         return View();
