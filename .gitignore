@@ -59,6 +59,8 @@ appsettings.*.json
 *.sqlite
 *.sqlite3
 *.db
+*.db-shm
+*.db-wal
 logs/
 
 # Temporary or cache files
