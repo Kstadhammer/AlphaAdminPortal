@@ -6,13 +6,12 @@
             <h3>New Client</h3>
             <button class="btn-close" data-close="true"></button>
         </div>
-        <form novalidate method="post" asp-action="AddClient" asp-controller="Admin" enctype="multipart/form-data">
+        <form novalidate method="post" asp-action="AddClient" asp-controller="Clients" enctype="multipart/form-data">
             <!-- Profile Picture Upload Section -->
             <div class="profile-upload-container">
                 <div class="profile-upload">
-                    <input asp-for="ClientImage" type="file" id="profileImage" name="ProfileImage" accept="image/*"
-                        class="profile-input" />
-                    <label for="clientImage" class="profile-label">
+                    <input asp-for="ClientImage" type="file" id="profileImage" class="profile-input" />
+                    <label for="ClientImage" class="profile-label">
                         <div class="camera-icon">
                             <i class="fa-regular fa-camera"></i>
                         </div>
@@ -53,8 +52,6 @@
                     <span asp-validation-for="Phone"></span>
                 </div>
             </div>
-
-
 
             <button type="submit" class="btn btn-submit btn-blue">Add Client</button>
         </form>

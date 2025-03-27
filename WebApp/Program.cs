@@ -13,6 +13,7 @@ builder.Services.AddDbContext<DataContext>(x =>
 
 builder.Services.AddScoped<IMemberService, MemberService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IClientService, ClientService>();
 builder
     .Services.AddIdentity<MemberEntity, IdentityRole>(options =>
     {

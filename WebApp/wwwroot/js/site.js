@@ -37,14 +37,20 @@
       // Check for saved preference
       const darkMode = localStorage.getItem("darkMode") === "true";
       darkModeToggle.checked = darkMode;
-      if (darkMode) document.body.classList.add("dark-theme");
+      if (darkMode) {
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.querySelector(".search-icon").src = "/images/Search_white.svg";
+      }
 
       darkModeToggle.addEventListener("change", () => {
         if (darkModeToggle.checked) {
-          document.body.classList.add("dark-theme");
+          document.documentElement.setAttribute("data-theme", "dark");
+          document.querySelector(".search-icon").src =
+            "/images/Search_white.svg";
           localStorage.setItem("darkMode", "true");
         } else {
-          document.body.classList.remove("dark-theme");
+          document.documentElement.removeAttribute("data-theme");
+          document.querySelector(".search-icon").src = "/images/Search.svg";
           localStorage.setItem("darkMode", "false");
         }
       });

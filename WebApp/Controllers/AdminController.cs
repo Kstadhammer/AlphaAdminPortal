@@ -6,9 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApp.Controllers;
 
 [Authorize]
-public class AdminController(IMemberService memberService) : Controller
+public class AdminController : Controller
 {
-    private readonly IMemberService _memberService = memberService;
+    private readonly IMemberService _memberService;
+    private readonly IClientService _clientService;
+
+    public AdminController(IMemberService memberService, IClientService clientService)
+    {
+        _memberService = memberService;
+        _clientService = clientService;
+    }
 
     // GET
     public IActionResult Index()
@@ -29,8 +36,9 @@ public class AdminController(IMemberService memberService) : Controller
     }
 
     [Route("clients")]
-    public IActionResult Clients()
+    public async Task<IActionResult> Clients()
     {
-        return View();
+        var clients = await _clientService.GetAllClientsAsync();
+        return View(clients);
     }
 }

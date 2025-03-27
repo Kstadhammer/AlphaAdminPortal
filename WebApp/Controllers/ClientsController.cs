@@ -1,3 +1,4 @@
+using Business.Interfaces;
 using Business.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -5,41 +6,75 @@ namespace WebApp.Controllers;
 
 public class ClientsController : Controller
 {
+    private readonly IClientService _clientService;
+
+    public ClientsController(IClientService clientService)
+    {
+        _clientService = clientService;
+    }
+
+    [HttpGet]
+    [Route("[controller]/GetClient/{id}")]
+    public async Task<IActionResult> GetClient(int id)
+    {
+        var client = await _clientService.GetClientForEditAsync(id);
+
+        if (client == null)
+        {
+            return Json(new { success = false, error = "Client not found" });
+        }
+
+        return Json(
+            new
+            {
+                success = true,
+                client = new
+                {
+                    clientName = client.ClientName,
+                    email = client.Email,
+                    location = client.Location,
+                    phone = client.Phone,
+                },
+            }
+        );
+    }
+
     [HttpPost]
-    public IActionResult AddClient(AddClientForm form)
+    public async Task<IActionResult> AddClient(AddClientForm form)
     {
         if (!ModelState.IsValid)
         {
-            var errors = ModelState
-                .Where(x => x.Value?.Errors.Count > 0)
-                .ToDictionary(
-                    kvp => kvp.Key,
-                    kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
-                );
-
-            return BadRequest(new { success = false, errors });
+            // Return to the clients page with validation errors
+            return RedirectToAction("Clients", "Admin");
         }
 
-        // send data to ClientService
+        var success = await _clientService.AddClientAsync(form);
+        if (!success)
+        {
+            TempData["Error"] = "Failed to add client. Please try again.";
+            return RedirectToAction("Clients", "Admin");
+        }
 
+        TempData["Success"] = "Client added successfully!";
         return RedirectToAction("Clients", "Admin");
     }
 
     [HttpPost]
-    public IActionResult EditClient(EditClientForm form)
+    public async Task<IActionResult> EditClient(EditClientForm form)
     {
         if (!ModelState.IsValid)
         {
-            var errors = ModelState
-                .Where(x => x.Value?.Errors.Count > 0)
-                .ToDictionary(
-                    kvp => kvp.Key,
-                    kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
-                );
-
-            return BadRequest(new { success = false, errors });
+            return RedirectToAction("Clients", "Admin");
         }
 
-        return View();
+        var success = await _clientService.EditClientAsync(form);
+        if (!success)
+        {
+            TempData["Error"] = "Failed to update client. Please try again.";
+            return RedirectToAction("Clients", "Admin");
+        }
+
+        TempData["Success"] = "Client updated successfully!";
+        return RedirectToAction("Clients", "Admin");
     }
 }
